@@ -6,6 +6,7 @@ import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -52,5 +53,12 @@ public class LaptopWS {
 	public Response updateLaptop(Laptop l){
 		ldao.update(l);
 		return Response.ok(l).build();
+	}
+	
+	@DELETE
+	@Path("/{id}")
+	public Response joiewjr398(@PathParam("id") int id){
+		ldao.delete(id);
+		return Response.status(204).build();
 	}
 }

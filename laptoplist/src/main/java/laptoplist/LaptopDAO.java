@@ -31,4 +31,8 @@ public class LaptopDAO {
 	public void update(Laptop l){
 		em.merge(l);
 	}
+	
+	public void delete(int id){
+		em.remove(getLaptop(id));
+	}
 }
