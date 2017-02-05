@@ -27,4 +27,8 @@ public class LaptopDAO {
 	public void add(Laptop l){
 		em.persist(l);
 	}
+	
+	public void update(Laptop l){
+		em.merge(l);
+	}
 }
