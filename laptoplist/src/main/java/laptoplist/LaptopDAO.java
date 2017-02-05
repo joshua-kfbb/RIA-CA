@@ -19,4 +19,12 @@ public class LaptopDAO {
 		Query query=em.createQuery("SELECT l FROM Laptop l");
 		return query.getResultList();
 	}
+	
+	public Laptop getLaptop(int id){
+		return em.find(Laptop.class, id);
+	}
+	
+	public void add(Laptop l){
+		em.persist(l);
+	}
 }

@@ -34,7 +34,7 @@ public class Laptop implements Serializable {
 
 	private String gpu;
 
-	@Enumerated
+	@Enumerated(EnumType.STRING)
 	@Column(name="kb_backlight",columnDefinition="ENUM('monochrome', 'color', 'none')")
 	private KBLType kbBacklight;
 
@@ -60,7 +60,7 @@ public class Laptop implements Serializable {
 	@Column(name="storage_size")
 	private short storageSize;
 	
-	@Enumerated
+	@Enumerated(EnumType.STRING)
 	@Column(name="storage_type", columnDefinition="ENUM('HDD', 'SSD')")
 	private StorageType storageType;
 
