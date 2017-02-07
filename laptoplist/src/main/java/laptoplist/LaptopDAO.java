@@ -1,5 +1,6 @@
 package laptoplist;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.ejb.LocalBean;
@@ -41,9 +42,13 @@ public class LaptopDAO {
 		Query query=em.createQuery(qStr).setParameter("m", manufacturer);
 		return query.getResultList();
 	}
-	public List<Laptop> getLaptopByMinMem(short mem){
-		String qStr="select l from Laptop l where l.mainMem > :m";
-		Query query=em.createQuery(qStr).setParameter("m", mem);
+
+	public List<Laptop> getLaptopByScreenSizeRange(BigDecimal min, BigDecimal max){
+		String qStr="select l from Laptop l where l.screenSize >= :min and l.screenSize<= :max";
+		Query query=em.createQuery(qStr)
+				.setParameter("min", min)
+				.setParameter("max", max);
 		return query.getResultList();
+		
 	}
 }

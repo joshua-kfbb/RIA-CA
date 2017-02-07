@@ -1,5 +1,6 @@
 package laptoplist;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -69,19 +70,22 @@ public class LaptopWS {
 	
 	@GET
 	@Produces({MediaType.APPLICATION_JSON})
-	@Path("/search/byManufacturer/{m}")
+	@Path("/search/bymanufacturer/{m}")
 	public Response getLaptopByManufacture(@PathParam("m") String m)
 	{
 		List<Laptop> laptops=ldao.getLaptopByManufacturer(m);
 		return Response.ok(laptops).build();
 	}
 	
+	
 	@GET
 	@Produces({MediaType.APPLICATION_JSON})
-	@Path("/search/byMemory/min/{m}")
-	public Response getLaptopByMinMem(@PathParam("m") String m)
-	{
-		List<Laptop> laptops=ldao.getLaptopByMinMem(Short.valueOf(m));
+	@Path("/search/byscreensize/min/{min}/max/{max}")
+	public Response getLaptopByScreenSizeRange(@PathParam("min") String strMin,@PathParam("max") String strMax){
+		BigDecimal min=new BigDecimal(strMin);
+		BigDecimal max=new BigDecimal(strMax);
+		List<Laptop> laptops=ldao.getLaptopByScreenSizeRange(min, max);
 		return Response.ok(laptops).build();
 	}
+	
 }
