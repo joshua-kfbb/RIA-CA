@@ -1,0 +1,6 @@
+language: java
+before_script: cd laptoplist
+script: mvn verify
+cache:
+  directories:
+    - $HOME/.m2
