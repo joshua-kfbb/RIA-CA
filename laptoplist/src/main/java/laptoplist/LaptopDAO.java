@@ -35,4 +35,15 @@ public class LaptopDAO {
 	public void delete(int id){
 		em.remove(getLaptop(id));
 	}
+	
+	public List<Laptop> getLaptopByManufacturer(String manufacturer){
+		String qStr="select l from Laptop l where l.manufacturer like :m";
+		Query query=em.createQuery(qStr).setParameter("m", manufacturer);
+		return query.getResultList();
+	}
+	public List<Laptop> getLaptopByMinMem(short mem){
+		String qStr="select l from Laptop l where l.mainMem > :m";
+		Query query=em.createQuery(qStr).setParameter("m", mem);
+		return query.getResultList();
+	}
 }

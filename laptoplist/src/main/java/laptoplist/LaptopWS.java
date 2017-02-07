@@ -61,4 +61,27 @@ public class LaptopWS {
 		ldao.delete(id);
 		return Response.status(204).build();
 	}
+	
+	/**
+	 * Search Laptops by manufacturer
+	 * 
+	 */
+	
+	@GET
+	@Produces({MediaType.APPLICATION_JSON})
+	@Path("/search/byManufacturer/{m}")
+	public Response getLaptopByManufacture(@PathParam("m") String m)
+	{
+		List<Laptop> laptops=ldao.getLaptopByManufacturer(m);
+		return Response.ok(laptops).build();
+	}
+	
+	@GET
+	@Produces({MediaType.APPLICATION_JSON})
+	@Path("/search/byMemory/min/{m}")
+	public Response getLaptopByMinMem(@PathParam("m") String m)
+	{
+		List<Laptop> laptops=ldao.getLaptopByMinMem(Short.valueOf(m));
+		return Response.ok(laptops).build();
+	}
 }
