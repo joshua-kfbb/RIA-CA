@@ -16,6 +16,6 @@ function renderTable(data){
 				+laptop.gpu+'</td><td>'
 				+laptop.mainMem+'</td><td>'
 				+laptop.storageType+'</td></tr>');
-	})
+	});
 	$('#laptop-table').DataTable();
 }
