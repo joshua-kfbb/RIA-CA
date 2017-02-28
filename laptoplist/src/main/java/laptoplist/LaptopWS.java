@@ -53,7 +53,10 @@ public class LaptopWS {
 	@Path("/{id}")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces({MediaType.APPLICATION_JSON})
-	public Response updateLaptop(Laptop l){
+	public Response updateLaptop(Laptop l,@PathParam("id") int id){
+		if(l.getLId()==0){
+			l.setLId(id);
+		}
 		ldao.update(l);
 		return Response.ok(l).build();
 	}

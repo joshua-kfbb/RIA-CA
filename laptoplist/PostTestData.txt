@@ -1,0 +1,15 @@
+{
+"adapterPower": 230,
+"cpu": "Core i7 6700K",
+"gpu": "GTX970M",
+"kbBacklight": "color",
+"mainMem": 8,
+"manufacturer": "MSI",
+"screenResolution": "2560x1440",
+"screenSize": 15.6,
+"storageSize": 750,
+"storageType": "HDD",
+"videoMem": 3.5,
+"weight": 2.6,
+"lmodel": "16L1"
+}

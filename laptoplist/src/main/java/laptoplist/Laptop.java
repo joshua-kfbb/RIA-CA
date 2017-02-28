@@ -48,10 +48,10 @@ public class Laptop implements Serializable {
 	@Column(name="l_id")
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int lId;
+	private int lid;
 
 	@Column(name="l_model")
-	private String lModel;
+	private String lmodel;
 
 	@Column(name="main_mem")
 	private short mainMem;
@@ -112,19 +112,19 @@ public class Laptop implements Serializable {
 	}
 
 	public int getLId() {
-		return this.lId;
+		return this.lid;
 	}
 
 	public void setLId(int lId) {
-		this.lId = lId;
+		this.lid = lId;
 	}
 
 	public String getLModel() {
-		return this.lModel;
+		return this.lmodel;
 	}
 
 	public void setLModel(String lModel) {
-		this.lModel = lModel;
+		this.lmodel = lModel;
 	}
 
 	public short getMainMem() {
@@ -191,6 +191,14 @@ public class Laptop implements Serializable {
 
 	public void setWeight(double weight) {
 		this.weight = weight;
+	}
+
+	@Override
+	public String toString() {
+		return "Laptop [adapterPower=" + adapterPower + ", cpu=" + cpu + ", gpu=" + gpu + ", kbBacklight=" + kbBacklight
+				+ ", lId=" + lid + ", lModel=" + lmodel + ", mainMem=" + mainMem + ", manufacturer=" + manufacturer
+				+ ", screenResolution=" + screenResolution + ", screenSize=" + screenSize + ", storageSize="
+				+ storageSize + ", storageType=" + storageType + ", videoMem=" + videoMem + ", weight=" + weight + "]";
 	}
 
 }

@@ -1,8 +1,10 @@
 package laptoplist.test;
 import static org.junit.Assert.assertEquals;
 
+import java.math.BigDecimal;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.logging.Logger;
 
 import org.apache.http.HttpStatus;
 import org.junit.Assert;
@@ -25,43 +27,110 @@ public class RestAPITest {
 	}
 
 	@Test
-	public void testGetWines() {
+	public void testGetLaptops() {
 		String url=baseurl;
 		RestResponse response = RestApiHelper.performGetRequest(url, null);
 		assertEquals(HttpStatus.SC_OK, response.getStatusCode());
+//		System.out.println("Response:\n"+response.getResponseBody());
 		Laptop	[] laptops = new Gson().fromJson(response.getResponseBody(),
 				Laptop[].class);
-		assertEquals(2, laptops.length);
+		assertEquals(4, laptops.length);
+		
 		Laptop laptop = laptops[0];
-//		Assert.assertEquals("CHATEAU DE SAINT COSME", wine.getName());
-//		Assert.assertEquals("France", wine.getCountry());
-//		Assert.assertEquals("Southern Rhone / Gigondas", wine.getRegion());
-//		Assert.assertEquals("excellent complement to fish dishes",
-//				wine.getDescription());
+		assertEquals(120, laptop.getAdapterPower());
+		assertEquals("Core i7 4700MQ", laptop.getCpu());
+		assertEquals("GTX860M", laptop.getGpu());
+		assertEquals(Laptop.KBLType.monochrome ,laptop.getKbBacklight());
+		assertEquals(4, laptop.getMainMem());
+		assertEquals("Clevo", laptop.getManufacturer());
+		assertEquals("1920x1080", laptop.getScreenResolution());
+		assertEquals(new BigDecimal("13.3"), laptop.getScreenSize());
+		assertEquals(500, laptop.getStorageSize());
+		assertEquals(Laptop.StorageType.SSD, laptop.getStorageType());
+		assertEquals(new Double(2.0), new Double(laptop.getVideoMem()));
+		assertEquals(new Double(2.5), new Double(laptop.getWeight()));
+		assertEquals(1l, laptop.getLId());
+		assertEquals("w230ss", laptop.getLModel());
+		
 		laptop = laptops[1];
-//		Assert.assertEquals("LAN RIOJA CRIANZA", wine.getName());
-//		Assert.assertEquals("Spain", wine.getCountry());
-//		Assert.assertEquals("Rioja", wine.getRegion());
+		assertEquals(150, laptop.getAdapterPower());
+		assertEquals("Core i7 4700MQ", laptop.getCpu());
+		assertEquals("GTX950M", laptop.getGpu());
+		assertEquals(Laptop.KBLType.none ,laptop.getKbBacklight());
+		assertEquals(8, laptop.getMainMem());
+		assertEquals("Clevo", laptop.getManufacturer());
+		assertEquals("1920x1080", laptop.getScreenResolution());
+		assertEquals(new BigDecimal("15.6"), laptop.getScreenSize());
+		assertEquals(500, laptop.getStorageSize());
+		assertEquals(Laptop.StorageType.HDD, laptop.getStorageType());
+		assertEquals(new Double(2.0), new Double(laptop.getVideoMem()));
+		assertEquals(new Double(2.6), new Double(laptop.getWeight()));
+		assertEquals(2l, laptop.getLId());
+		assertEquals("w650sc", laptop.getLModel());
+		
+		laptop = laptops[2];
+		assertEquals(65, laptop.getAdapterPower());
+		assertEquals("Core i5 5200U", laptop.getCpu());
+		assertEquals("GT 940M", laptop.getGpu());
+		assertEquals(Laptop.KBLType.none ,laptop.getKbBacklight());
+		assertEquals(4, laptop.getMainMem());
+		assertEquals("ASUS", laptop.getManufacturer());
+		assertEquals("1920x1080", laptop.getScreenResolution());
+		assertEquals(new BigDecimal("14.1"), laptop.getScreenSize());
+		assertEquals(500, laptop.getStorageSize());
+		assertEquals(Laptop.StorageType.HDD, laptop.getStorageType());
+		assertEquals(new Double(2.0), new Double(laptop.getVideoMem()));
+		assertEquals(new Double(1.8), new Double(laptop.getWeight()));
+		assertEquals(3l, laptop.getLId());
+		assertEquals("A401L", laptop.getLModel());
+		
+		laptop = laptops[3];
+		assertEquals(180, laptop.getAdapterPower());
+		assertEquals("Core i7 4710HQ", laptop.getCpu());
+		assertEquals("GTX980M", laptop.getGpu());
+		assertEquals(Laptop.KBLType.color ,laptop.getKbBacklight());
+		assertEquals(8, laptop.getMainMem());
+		assertEquals("Clevo", laptop.getManufacturer());
+		assertEquals("2560x1440", laptop.getScreenResolution());
+		assertEquals(new BigDecimal("17.3"), laptop.getScreenSize());
+		assertEquals(750, laptop.getStorageSize());
+		assertEquals(Laptop.StorageType.SSD, laptop.getStorageType());
+		assertEquals(new Double(6.0), new Double(laptop.getVideoMem()));
+		assertEquals(new Double(2.8), new Double(laptop.getWeight()));
+		assertEquals(4l, laptop.getLId());
+		assertEquals("p670sg", laptop.getLModel());
 	}
 
 	@Test
-	public void testGetWineWithId() {
-		String url = baseurl+"1";
+	public void testGetLaptopById() {
+		String url = baseurl+"3";
 		RestResponse response = RestApiHelper.performGetRequest(url, null);
 		Assert.assertEquals(HttpStatus.SC_OK, response.getStatusCode());
 		/**
 		 * 1. Use GSON builder class to get the instance of GSON class 2. Use
 		 * the GSON object to deserialize the json
 		 */
-		Laptop l = new Gson().fromJson(response.getResponseBody(), Laptop.class);
-//		Assert.assertEquals("CHATEAU DE SAINT COSME", wine.getName());
-//		Assert.assertEquals("France", wine.getCountry());
-//		Assert.assertEquals("Southern Rhone / Gigondas", wine.getRegion());
+		Laptop laptop = new Gson().fromJson(response.getResponseBody(), Laptop.class);
+		assertEquals(65, laptop.getAdapterPower());
+		assertEquals("Core i5 5200U", laptop.getCpu());
+		assertEquals("GT 940M", laptop.getGpu());
+		assertEquals(Laptop.KBLType.none ,laptop.getKbBacklight());
+		assertEquals(4, laptop.getMainMem());
+		assertEquals("ASUS", laptop.getManufacturer());
+		assertEquals("1920x1080", laptop.getScreenResolution());
+		assertEquals(new BigDecimal("14.1"), laptop.getScreenSize());
+		assertEquals(500, laptop.getStorageSize());
+		assertEquals(Laptop.StorageType.HDD, laptop.getStorageType());
+		assertEquals(new Double(2.0), new Double(laptop.getVideoMem()));
+		assertEquals(new Double(1.8), new Double(laptop.getWeight()));
+		assertEquals(3l, laptop.getLId());
+		assertEquals("A401L", laptop.getLModel());
+//		
 	}
 
 	@Test
 	public void testPostWine() {
-		String fileName = "TestDataFile.txt";
+		String fileName = "PostTestData.txt";
 		Map<String, String> headers = new LinkedHashMap<String, String>();
 		headers.put("Accept", "application/json");
 		headers.put("Content-Type", "application/json");
@@ -69,23 +138,29 @@ public class RestAPITest {
 				baseurl, fileName,
 				headers);
 		Assert.assertEquals(HttpStatus.SC_CREATED, response.getStatusCode());
-		Laptop l = new Gson().fromJson(response.getResponseBody(), Laptop.class);
+		Laptop laptop = new Gson().fromJson(response.getResponseBody(), Laptop.class);
 		String url = baseurl
-				+ l.getLId();
+				+ laptop.getLId();
 		response = RestApiHelper.performGetRequest(url, null);
-//		Assert.assertEquals(HttpStatus.SC_OK, response.getStatusCode());
-//		Assert.assertEquals("CHATEAU DE ATHLONE", wine.getName());
-//		Assert.assertEquals("Athlone / Tullamore", wine.getGrapes());
-//		Assert.assertEquals("Midlands / East", wine.getRegion());
-//		Assert.assertEquals("2017", wine.getYear());
-//		Assert.assertEquals("saint_cosme.jpg", wine.getPicture());
-//		Assert.assertEquals("This wine in not drinkable.",
-//				wine.getDescription());
+		Assert.assertEquals(HttpStatus.SC_OK, response.getStatusCode());
+		assertEquals(230, laptop.getAdapterPower());
+		assertEquals("Core i7 6700K", laptop.getCpu());
+		assertEquals("GTX970M", laptop.getGpu());
+		assertEquals(Laptop.KBLType.color ,laptop.getKbBacklight());
+		assertEquals(8, laptop.getMainMem());
+		assertEquals("MSI", laptop.getManufacturer());
+		assertEquals("2560x1440", laptop.getScreenResolution());
+		assertEquals(new BigDecimal("15.6"), laptop.getScreenSize());
+		assertEquals(750, laptop.getStorageSize());
+		assertEquals(Laptop.StorageType.HDD, laptop.getStorageType());
+		assertEquals(new Double(3.5), new Double(laptop.getVideoMem()));
+		assertEquals(new Double(2.6), new Double(laptop.getWeight()));
+		assertEquals("16L1", laptop.getLModel());
 	}
 
 	@Test
 	public void testPutWine() {
-		String fileName = "TestDataPut.txt";
+		String fileName = "PutTestData.txt";
 		Map<String, String> headers = new LinkedHashMap<String, String>();
 		headers.put("Accept", "application/json");
 		headers.put("Content-Type", "application/json");
@@ -93,16 +168,22 @@ public class RestAPITest {
 		RestResponse response = RestApiHelper.performPutRequest(url, fileName,
 				headers);
 		Assert.assertEquals(HttpStatus.SC_OK, response.getStatusCode());
-		Laptop l = new Gson().fromJson(response.getResponseBody(), Laptop.class);
+		Laptop laptop = new Gson().fromJson(response.getResponseBody(), Laptop.class);
 		response = RestApiHelper.performGetRequest(url, null);
 		Assert.assertEquals(HttpStatus.SC_OK, response.getStatusCode());
-//		Assert.assertEquals("CHATEAU DE SAINT COSME", wine.getName());
-//		Assert.assertEquals("Grenache / Syrah", wine.getGrapes());
-//		Assert.assertEquals("France", wine.getCountry());
-//		Assert.assertEquals("Athlone", wine.getRegion());
-//		Assert.assertEquals("2017", wine.getYear());
-//		Assert.assertEquals("saint_cosme.jpg", wine.getPicture());
-//		Assert.assertEquals("This wine has improved.", wine.getDescription());
+		assertEquals(180, laptop.getAdapterPower());
+		assertEquals("Core i7 4710HQ", laptop.getCpu());
+		assertEquals("GTX970M", laptop.getGpu());
+		assertEquals(Laptop.KBLType.color ,laptop.getKbBacklight());
+		assertEquals(8, laptop.getMainMem());
+		assertEquals("Clevo", laptop.getManufacturer());
+		assertEquals("1920x1080", laptop.getScreenResolution());
+		assertEquals(new BigDecimal("15.6"), laptop.getScreenSize());
+		assertEquals(750, laptop.getStorageSize());
+		assertEquals(Laptop.StorageType.HDD, laptop.getStorageType());
+		assertEquals(new Double(3.5), new Double(laptop.getVideoMem()));
+		assertEquals(new Double(2.6), new Double(laptop.getWeight()));
+		assertEquals("p650sg", laptop.getLModel());
 	}
 
 	@Test
@@ -119,7 +200,7 @@ public class RestAPITest {
 		assertEquals(HttpStatus.SC_OK, response.getStatusCode());
 		Laptop[] laptops = new Gson().fromJson(response.getResponseBody(),
 				Laptop[].class);
-		assertEquals(1, laptops.length);
+		assertEquals(3, laptops.length);
 	}
 }
 
