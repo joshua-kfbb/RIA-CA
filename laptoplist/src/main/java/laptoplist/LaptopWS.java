@@ -16,6 +16,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 
 @Path("/laptops")
 @Stateless
@@ -37,6 +38,7 @@ public class LaptopWS {
 	@Path("/{id}")
 	public Response findLaptopById(@PathParam("id") int id){
 		Laptop l=ldao.getLaptop(id);
+		if(l==null) return Response.noContent().build();
 		return Response.ok(l).build();
 	}
 	
@@ -58,9 +60,9 @@ public class LaptopWS {
 	
 	@DELETE
 	@Path("/{id}")
-	public Response joiewjr398(@PathParam("id") int id){
+	public Response deleteLaptop(@PathParam("id") int id){
 		ldao.delete(id);
-		return Response.status(204).build();
+		return Response.status(Status.NO_CONTENT).build();
 	}
 	
 	/**

@@ -3,26 +3,88 @@
 <head>
 <meta charset="UTF-8">
 <title>Laptop World</title>
-<script src="js/jquery-3.1.1.min.js" ></script>
-<script src="js/jquery.dataTables.js" ></script>
-<script src="js/main.js" ></script>
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/jquery.dataTables.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/main.js"></script>
 <link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css">
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+<style>
+.tab-pane{
+height:500px;
+}
+.fixed-footer{
+position:fixed;
+top:90%;
+left:45%;
+}
+</style>
 </head>
 <body>
-<table id="laptop-table" class="display">
-<thead>
-<tr>
-	<th>Make</th>
-	<th>Model</th>
-	<th>Screen Size</th>
-	<th>CPU</th>
-	<th>GPU</th>
-	<th>Memory</th>
-	<th>Storage</th>
-</tr>
-</thead>
-<tbody id="laptop-tbody"></tbody>
-</table>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-0 col-md-2"></div>
+			<div class="col-md-12 col-md-8">
+				<div class="page-header">
+					<!-- Header -->
+					<h1>
+						Example page header <small>Subtext for header</small>
+					</h1>
+				</div>
+				<div>
+					<!-- Nav tabs -->
+					<ul class="nav nav-tabs" role="tablist">
+						<li role="presentation" class="active"><a href="#home"
+							aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+						<li role="presentation"><a href="#laptops"
+							aria-controls="laptops" role="tab" data-toggle="tab">Laptops</a></li>
+						<li role="presentation"><a href="#about"
+							aria-controls="messages" role="tab" data-toggle="tab">About
+								Us</a></li>
+					</ul>
+
+					<!-- Tab panes -->
+					<div class="tab-content">
+						<div role="tabpanel" class="tab-pane active" id="home">
+							<h1>
+								Home <br /> <small>just a placeholder</small>
+							</h1>
+						</div>
+						<div role="tabpanel" class="tab-pane" id="laptops">
+							<div style="margin-top: 20px;">
+								<table id="laptop-table" class="display">
+									<thead>
+										<tr>
+											<th>Make</th>
+											<th>Model</th>
+											<th>Screen Size</th>
+											<th>CPU</th>
+											<th>GPU</th>
+											<th>Memory</th>
+											<th>Storage</th>
+										</tr>
+									</thead>
+									<tbody id="laptop-tbody"></tbody>
+								</table>
+							</div>
+						</div>
+						<div role="tabpanel" class="tab-pane" id="about">
+							<h1>
+								About <br /> <small>yet another placeholder</small>
+							</h1>
+						</div>
+					</div>
+				</div>
+				<div>
+					<!-- footer -->
+					<p class="text-center">&copy;A00238069</p>
+				</div>
+			</div>
+
+			<div class="col-sm-0 col-md-2"></div>
+		</div>
+	</div>
+
+
 </body>
 </html>

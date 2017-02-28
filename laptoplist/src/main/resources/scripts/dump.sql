@@ -41,7 +41,7 @@ CREATE TABLE `laptop` (
   `weight` double NOT NULL DEFAULT '0',
   PRIMARY KEY (`l_id`),
   UNIQUE KEY `l_id` (`l_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -50,7 +50,7 @@ CREATE TABLE `laptop` (
 
 LOCK TABLES `laptop` WRITE;
 /*!40000 ALTER TABLE `laptop` DISABLE KEYS */;
-INSERT INTO `laptop` VALUES (1,'w230ss','Clevo',13.3,'1920x1080','monochrome','Core i7 4700MQ','GTX860M',4,2,'SSD',500,120,2.5),(2,'w650sc','Clevo',15.6,'1920x1080','none','Core i7 4700MQ','GTX950M',8,2,'HDD',500,150,2.6);
+INSERT INTO `laptop` VALUES (1,'w230ss','Clevo',13.3,'1920x1080','monochrome','Core i7 4700MQ','GTX860M',4,2,'SSD',500,120,2.5),(2,'w650sc','Clevo',15.6,'1920x1080','none','Core i7 4700MQ','GTX950M',8,2,'HDD',500,150,2.6),(3,'A401L','ASUS',14.1,'1920x1080','none','Core i5 5200U','GT 940M',4,2,'HDD',500,65,1.8),(4,'p670sg','Clevo',17.3,'2560x1440','color','Core i7 4710HQ','GTX980M',8,6,'SSD',750,180,2.8);
 /*!40000 ALTER TABLE `laptop` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -63,4 +63,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-02-05 17:32:34
+-- Dump completed on 2017-02-28  1:14:24
