@@ -129,7 +129,7 @@ public class RestAPITest {
 	}
 
 	@Test
-	public void testPostWine() {
+	public void testPostLaptop() {
 		String fileName = "PostTestData.txt";
 		Map<String, String> headers = new LinkedHashMap<String, String>();
 		headers.put("Accept", "application/json");
@@ -159,7 +159,7 @@ public class RestAPITest {
 	}
 
 	@Test
-	public void testPutWine() {
+	public void testPutLaptop() {
 		String fileName = "PutTestData.txt";
 		Map<String, String> headers = new LinkedHashMap<String, String>();
 		headers.put("Accept", "application/json");
@@ -187,7 +187,7 @@ public class RestAPITest {
 	}
 
 	@Test
-	public void testDeleteWine() {
+	public void testDeleteLaptop() {
 		String url = baseurl+"1";
 		RestResponse response = RestApiHelper.performDeleteRequest(url);
 		Assert.assertEquals(HttpStatus.SC_NO_CONTENT, response.getStatusCode());
