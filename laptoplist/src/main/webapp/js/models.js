@@ -6,6 +6,7 @@ var baseUrl = 'api/laptops';
 
 var Laptop = Backbone.Model.extend({
     urlRoot: baseUrl,
+    idAttribute:'lid',
     defaults: {
         "adapterPower": 0,
         "cpu": "",

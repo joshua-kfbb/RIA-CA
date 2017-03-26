@@ -15,6 +15,7 @@
 <script src="js/laptopRowView.js"></script>
 <script src="js/laptopTableView.js"></script>
 <script src="js/laptopDetailsView.js"></script>
+<script src="js/addLaptopDetailsView.js"></script>
 <script src="js/app.js"></script>
 
 <!--css-->
@@ -38,7 +39,7 @@
     <td><%= screenSize %></td>
     <td><%= cpu %></td>
     <td><%= gpu %></td>
-    <td><%= mainMem %></td>
+    <td><%= mainMem %> GB</td>
     <td><%= storageType %></td>
 	<td>
 	<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#laptop-details-<%=lid%>">
@@ -158,7 +159,8 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-primary">Save changes</button>
+				<button type="button" class="btn btn-danger btn-delete" data-dismiss="modal">Delete</button>
+				<button type="button" class="btn btn-primary btn-save" data-dismiss="modal" >Save changes</button>
 			</div>
 		</div>
 		<!-- /.modal-content -->
@@ -171,6 +173,7 @@
 <title>Laptop</title>
 </head>
 <body>
+<div style="text-align:right;"><a href="#" class="btn btn-success" data-toggle="modal" data-target="#laptop-details-new">Add</a></div>
 	<table id="laptop-table" class="display">
 		<thead>
 			<tr>

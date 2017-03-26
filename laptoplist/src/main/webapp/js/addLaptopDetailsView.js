@@ -1,15 +1,14 @@
-var LaptopDetailsView = Backbone.View.extend({
+var AddLaptopDetailsView = Backbone.View.extend({
     model: Laptop,
     tagName: 'div',
     events: {
         'click .btn-save': 'saveLaptop',
-        'click .btn-delete': 'deleteLaptop'
     },
     saveLaptop: function() {
         var id = this.model.get("lid");
-        console.info('saving ' + id + ':' + this.model.get('lmodel'));
+//        console.info('saving ' + id + ':' + this.model.get('lmodel'));
         var lDetails = {
-            lid: id,
+        	lid: null,
             lmodel: $('#laptop-model-' + id).val(),
             manufacturer: $('#laptop-manufacturer-' + id).val(),
             adapterPower: $('#adapter-power-' + id).val(),
@@ -23,26 +22,19 @@ var LaptopDetailsView = Backbone.View.extend({
             videoMem: $('#video-mem-' + id).val(),
             weight: $('#weight-' + id).val()
         };
+//        this.model=new Laptop(lDetails);
         this.model.save(lDetails, {
-            success: function(laptop) {
-                console.info('successfully updated.');
+            success: function(laptop,wtf) {
+            	laptopList.add(wtf);
+            	console.log(wtf)
+                console.info('successfully added, id: '+wtf.lid);
+                $('#modals').append(
+                		new LaptopDetailsView({model: new Laptop(wtf)}).render());
                 laptopTableView.renderTable();
             },
             error: function(laptop, response) {
-                console.error('fail to update: ' + response.statusText);
+                console.error('fail to add: ' + response.statusText);
 
-            }
-        });
-        console.log(lDetails);
-    },
-    deleteLaptop: function() {
-        var id = this.model.get('lid');
-        console.info('deleteing ' + id + ': ' + this.model.get('lmodel'));
-        this.model.destroy({
-            success: function(laptop) {
-            	laptopList.remove(id);
-                console.info(laptop.get('lid') + ' deleted.');
-                laptopTableView.renderTable();
             }
         });
     },
