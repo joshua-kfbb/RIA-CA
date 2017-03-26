@@ -20,6 +20,16 @@
 <!--css-->
 <link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css" />
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+<style>
+.input-group-addon {
+	width: 11em;
+	text-align: right;
+}
+
+.input-group {
+	padding-bottom: 10px;
+}
+</style>
 
 <!--templates-->
 <script type="text/template" id="template-laptop-row">
@@ -37,9 +47,14 @@
 	</td>
 </script>
 
-<script type="text/template" id="template-laptop-details">
-<div class="modal fade" id="laptop-details-<%=lid%>" tabindex="-1" role="dialog"
-	aria-labelledby="myModalLabel">
+<script type="text/template"  id="template-laptop-details">
+<% function options(vals,selected) { %>
+<% vals.forEach(function(val,i){ %>
+<option value="<%- val %>" <%= (val==selected)?"selected":""%> ><%= val %></option>
+<% }); %>
+<%};%>
+<div class="modal fade" id="laptop-details-<%=lid%>" tabindex="-1"
+	role="dialog" aria-labelledby="myModalLabel">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -50,7 +65,96 @@
 				<h4 class="modal-title">Laptop Details</h4>
 			</div>
 			<div class="modal-body">
-				<p>ID: <%= lid %></p>
+
+				<form class="form-horizontal">
+					<div class="input-group">
+						<span class="input-group-addon">ID</span> <input disabled
+							class="form-control col-sm-10" type="text"
+							id="laptop-id-<%= lid %>" value="<%= lid %>" />
+					</div>
+					<div class="input-group">
+						<span class="input-group-addon">Model</span> <input
+							class="form-control" type="text" id="laptop-model-<%= lid %>"
+							value="<%= lmodel %>" />
+					</div>
+
+					<div class="input-group">
+						<span class="input-group-addon">Manufacturer</span> <input
+							class="form-control" type="text"
+							id="laptop-manufacturer-<%= lid %>" value="<%= manufacturer %>" />
+					</div>
+
+					<div class="input-group">
+						<span class="input-group-addon">Adapter Power</span> 
+						<input
+							class="form-control" type="text" id="adapter-power-<%= lid %>"
+							value="<%= adapterPower %>" />
+					</div>
+
+					<div class="input-group">
+						<span class="input-group-addon">Keyboard Backlight</span>
+						<select class="form-control" id="kb-backlight-<%= lid %>" >
+						<% var KBLTypes=['monochrome','color','none']; %>
+						<% options(KBLTypes,kbBacklight) %>
+						</select>
+					</div>
+
+					<div class="input-group">
+						<span class="input-group-addon">CPU</span> <input
+							class="form-control" type="text" id="cpu-<%= lid %>"
+							value="<%= cpu %>" />
+					</div>
+
+					<div class="input-group">
+						<span class="input-group-addon">GPU</span> <input
+							class="form-control" type="text" id="gpu-<%= lid %>"
+							value="<%= gpu %>" />
+					</div>
+
+					<div class="input-group">
+						<span class="input-group-addon">Memory</span> <input
+							class="form-control" type="text" id="main-mem-<%= lid %>"
+							value="<%= mainMem %>" />
+					</div>
+
+					<div class="input-group">
+						<span class="input-group-addon">Screen Resolution</span> <input
+							class="form-control" type="text"
+							id="screen-resolution-<%= lid %>" value="<%= screenResolution %>" />
+					</div>
+
+					<div class="input-group">
+						<span class="input-group-addon">Screen Size</span> <input
+							class="form-control" type="text" id="screen-size-<%= lid %>"
+							value="<%= screenSize %>" />
+					</div>
+
+					<div class="input-group">
+						<span class="input-group-addon">Storage Size</span> <input
+							class="form-control" type="text" id="storage-size-<%= lid %>"
+							value="<%= storageSize %>" />
+					</div>
+
+					<div class="input-group">
+						<span class="input-group-addon">Storage Type</span> 
+						<select class="form-control" id="storage-type-<%= lid %>" >
+						<% options(['HDD','SSD'], storageType) %>
+						</select>
+					</div>
+
+					<div class="input-group">
+						<span class="input-group-addon">Video Memory</span> <input
+							class="form-control" type="text" id="video-mem-<%= lid %>"
+							value="<%= videoMem %>" />
+					</div>
+
+					<div class="input-group">
+						<span class="input-group-addon">Weight</span> <input
+							class="form-control" class="form-control" type="text"
+							id="weight-<%= lid %>" value="<%= weight %>" />
+					</div>
+				</form>
+				
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -61,7 +165,7 @@
 	</div>
 	<!-- /.modal-dialog -->
 </div>
-<!-- /.modal -->
+<!-- /.modal --> 
 </script>
 
 <title>Laptop</title>
