@@ -20,6 +20,7 @@ var LaptopDetailsView = Backbone.View.extend({
             screenResolution: $('#screen-resolution-' + id).val(),
             screenSize: $('#screen-size-' + id).val(),
             storageType: $('#storage-type-' + id).val(),
+            storageSize: $('#storage-size-' + id).val(),
             videoMem: $('#video-mem-' + id).val(),
             weight: $('#weight-' + id).val()
         };

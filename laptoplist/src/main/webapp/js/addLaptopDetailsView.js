@@ -5,7 +5,7 @@ var AddLaptopDetailsView = Backbone.View.extend({
         'click .btn-save': 'saveLaptop',
     },
     saveLaptop: function() {
-        var id = this.model.get("lid");
+        var id = 'new';
 //        console.info('saving ' + id + ':' + this.model.get('lmodel'));
         var lDetails = {
         	lid: null,
@@ -19,14 +19,16 @@ var AddLaptopDetailsView = Backbone.View.extend({
             screenResolution: $('#screen-resolution-' + id).val(),
             screenSize: $('#screen-size-' + id).val(),
             storageType: $('#storage-type-' + id).val(),
+            storageSize: $('#storage-size-' + id).val(),
             videoMem: $('#video-mem-' + id).val(),
             weight: $('#weight-' + id).val()
         };
-//        this.model=new Laptop(lDetails);
+        this.model=new Laptop(lDetails);
+//        console.log(lDetails);
         this.model.save(lDetails, {
             success: function(laptop,wtf) {
             	laptopList.add(wtf);
-            	console.log(wtf)
+//            	console.log(wtf)
                 console.info('successfully added, id: '+wtf.lid);
                 $('#modals').append(
                 		new LaptopDetailsView({model: new Laptop(wtf)}).render());
