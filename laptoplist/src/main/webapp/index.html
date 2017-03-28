@@ -42,7 +42,7 @@
     <td><%= mainMem %> GB</td>
     <td><%= storageType %></td>
 	<td>
-	<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#laptop-details-<%=lid%>">
+	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#laptop-details-<%=lid%>">
 	Edit
 	</button>
 	</td>
@@ -173,23 +173,72 @@
 <title>Laptop</title>
 </head>
 <body>
-<div style="text-align:right;"><a href="#" class="btn btn-success" data-toggle="modal" data-target="#laptop-details-new">Add</a></div>
-	<table id="laptop-table" class="display">
-		<thead>
-			<tr>
-				<th>Make</th>
-				<th>Model</th>
-				<th>Screen Size</th>
-				<th>CPU</th>
-				<th>GPU</th>
-				<th>Memory</th>
-				<th>Storage</th>
-				<th>Action</th>
-			</tr>
-		</thead>
-		<tbody id="laptop-tbody"></tbody>
-	</table>
-	<div id="modals"></div>
 
+	<div id="modals"></div>
+<div class="container">
+		<div class="row">
+			<div class="col-sm-0 col-md-2"></div>
+			<div class="col-md-12 col-md-8">
+				<div class="page-header">
+					<!-- Header -->
+					<h1>
+						E-World <small>Latest tech in touch</small>
+					</h1>
+				</div>
+				<div>
+					<!-- Nav tabs -->
+					<ul class="nav nav-tabs" role="tablist">
+						<li role="presentation" class="active"><a href="#home"
+							aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+						<li role="presentation"><a href="#laptops"
+							aria-controls="laptops" role="tab" data-toggle="tab">Laptops</a></li>
+						<li role="presentation"><a href="#about"
+							aria-controls="messages" role="tab" data-toggle="tab">About
+								Us</a></li>
+					</ul>
+
+					<!-- Tab panes -->
+					<div class="tab-content">
+						<div role="tabpanel" class="tab-pane fade in active" id="home">
+							<h1>
+								Home <br /> <small>just a placeholder</small>
+							</h1>
+						</div>
+						<div role="tabpanel" class="tab-pane fade" id="laptops">
+							<div style="margin-top: 20px;">
+								<div style="text-align:right;"><a href="#" class="btn btn-success" data-toggle="modal" data-target="#laptop-details-new">Add</a></div>
+								<table id="laptop-table" class="display">
+									<thead>
+										<tr>
+											<th>Make</th>
+											<th>Model</th>
+											<th>Screen Size</th>
+											<th>CPU</th>
+											<th>GPU</th>
+											<th>Memory</th>
+											<th>Storage</th>
+											<th>Action</th>
+										</tr>
+									</thead>
+									<tbody id="laptop-tbody"></tbody>
+								</table>
+							</div>
+						</div>
+						<div role="tabpanel" class="tab-pane fade" id="about">
+							<h1>
+								About <br /> <small>yet another placeholder</small>
+							</h1>
+						</div>
+					</div>
+				</div>
+				<div>
+					<!-- footer -->
+					<p class="text-center">&copy;A00238069</p>
+				</div>
+			</div>
+
+			<div class="col-sm-0 col-md-2"></div>
+		</div>
+	</div>
 </body>
 </html>
