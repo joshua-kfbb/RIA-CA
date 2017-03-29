@@ -10,7 +10,7 @@ var LaptopTableView = Backbone.View.extend({
                 new LaptopRowView({ model: laptop }).render()
             );
             $('#modals').append(
-            		new LaptopDetailsView({model: laptop}).render());
+            		new LaptopEditDetailsView({model: laptop}).render());
         }, this);
         $('#laptop-table').DataTable();
     },

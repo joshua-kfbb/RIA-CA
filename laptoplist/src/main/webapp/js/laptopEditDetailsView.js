@@ -1,4 +1,4 @@
-var LaptopDetailsView = Backbone.View.extend({
+var LaptopEditDetailsView = Backbone.View.extend({
     model: Laptop,
     tagName: 'div',
     events: {
