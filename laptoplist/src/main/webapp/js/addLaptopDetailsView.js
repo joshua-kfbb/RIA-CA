@@ -28,10 +28,11 @@ var AddLaptopDetailsView = Backbone.View.extend({
         this.model.save(lDetails, {
             success: function(laptop,wtf) {
             	laptopList.add(wtf);
-//            	console.log(wtf)
+            	console.log(wtf);
+            	laptopTableView = new LaptopTableView({collection: laptopList});
                 console.info('successfully added, id: '+wtf.lid);
                 $('#modals').append(
-                		new LaptopDetailsView({model: new Laptop(wtf)}).render());
+                		new LaptopEditDetailsView({model: new Laptop(wtf)}).render());
                 laptopTableView.renderTable();
             },
             error: function(laptop, response) {

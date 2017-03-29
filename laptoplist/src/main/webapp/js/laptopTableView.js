@@ -18,12 +18,11 @@ var LaptopTableView = Backbone.View.extend({
         $('#laptop-table').DataTable().destroy();
         $('#laptop-tbody tr').remove();
         this.collection.each(function (laptop) {
-//        	console.log(laptop.get('lid'));
+        	console.log(laptop.get('lid')+':'+laptop.get('lmodel'));
             $('#laptop-tbody').append(
             		new LaptopRowView({ model: laptop }).render());
             
-        });
-        // }, this);
+        }, this);
         $('#laptop-table').DataTable();
     }
 });
